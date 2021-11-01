@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shoorick-kh/goit-js-hw-12-countries"
+    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
   },
   "keywords": [],
-  "author": "Alexandr",
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": 
+    "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
