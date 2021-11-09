@@ -16,6 +16,8 @@ function onSearchForm(evt) {
   evt.preventDefault();
 
   const searchQuery = evt.target.value.trim();
+
+  if (!searchQuery) return;
   console.log(searchQuery);
   clearContainer();
   apiService.fetchCountry(searchQuery).then(renderCard).catch(errorFetch);
@@ -24,6 +26,7 @@ function onSearchForm(evt) {
 function renderCard(country) {
   console.log(country);
   let numberOfCountries = country.length;
+
   if (country.status === 404) {
     error({ delay: 2000, title: 'Not Found', text: 'Need correct name!', styling: 'material' });
   } else if (numberOfCountries === 1) {
