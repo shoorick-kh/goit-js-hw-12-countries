@@ -16,6 +16,7 @@ function onSearchForm(evt) {
   evt.preventDefault();
 
   const searchQuery = evt.target.value.trim();
+  console.log(searchQuery);
   clearContainer();
   apiService.fetchCountry(searchQuery).then(renderCard).catch(errorFetch);
 }
@@ -23,16 +24,17 @@ function onSearchForm(evt) {
 function renderCard(country) {
   console.log(country);
   let numberOfCountries = country.length;
-
-  if (numberOfCountries === 1) {
+  if (country.status === 404) {
+    error({ delay: 2000, title: 'Not Found', text: 'Need correct name!', styling: 'material' });
+  } else if (numberOfCountries === 1) {
     refs.cardContainer.innerHTML = cardMarkup(country);
-  } else if (numberOfCountries <= 10) {
+  } else if (numberOfCountries >= 2 && numberOfCountries <= 10) {
     refs.cardContainer.innerHTML = listMarkup(country);
   } else if (numberOfCountries > 10) {
     error({
       delay: 2000,
       title: 'Atention!',
-      text: 'Need correct name of country, or may be more letters of name...',
+      text: 'Need more letters of name...',
       styling: 'material',
       width: '400px',
     });
